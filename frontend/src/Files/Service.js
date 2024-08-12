@@ -100,7 +100,7 @@ function Services() {
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="me-2 " /> 123 kovil Street, pollachi City
                 </li>
                 <li className="list-group-item ">
-                  <FontAwesomeIcon icon={faEnvelope} className="me-2 " /> Sachin Finance@gmail.com
+                  <FontAwesomeIcon icon={faEnvelope} className="me-2 " /> The Money Manager@gmail.com
                 </li>
                 <li className="list-group-item ">
                   <FontAwesomeIcon icon={faPhone} className="me-2 " /> +91 90808 80367

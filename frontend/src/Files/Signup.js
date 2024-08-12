@@ -53,6 +53,7 @@ function Signup() {
                   className="form-control"
                   name="name"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -63,6 +64,7 @@ function Signup() {
                   className="form-control"
                   name="mobileNo"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -73,6 +75,7 @@ function Signup() {
                   className="form-control"
                   name="email"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -83,6 +86,7 @@ function Signup() {
                   className="form-control"
                   name="password"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -93,6 +97,7 @@ function Signup() {
                   className="form-control"
                   name="address"
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -105,7 +110,7 @@ function Signup() {
                 <button className="btn btn-success mb-3 w-100" type="submit">
                   <strong>Sign up</strong>
                   </button>
-              <p className="text-center">Already have an account? <Link to="/login">Click here</Link></p>
+              <p className="text-center">Already have an account? <Link to="/login">Login</Link></p>
             </form>
           </div>
         </div>

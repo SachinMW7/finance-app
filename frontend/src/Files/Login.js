@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -22,29 +21,33 @@ function Login() {
       });
 
       if (response.data.success) {
-        navigate('/home');
+        setSuccessMessage('Login successful');
+        // Reload the page after successful login
+        window.location.reload();
       } else {
         setError('Invalid credentials');
       }
     } catch (error) {
       console.error('Error during login:', error);
+      setError('An error occurred during login');
     }
   };
 
   return (
     <div className="container">
       <div className="row justify-content-center align-items-center">
-        <div className="col-md-6 ">
+        <div className="col-md-6">
           <div className="card p-3 rounded m-5 shadow">
             <div className="sub-headings">
               <h2 className="text-secondary text-center fw-bold">Log In</h2>
             </div>
-            <form >
+            <form>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">
-                  <strong>Email Address:</strong>
+                  Email Address:
                 </label>
                 <input
+                  required
                   type="text"
                   placeholder="Enter email"
                   className="form-control"
@@ -53,9 +56,10 @@ function Login() {
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">
-                  <strong>Password:</strong>
+                  Password:
                 </label>
                 <input
+                  required
                   type="password"
                   placeholder="Enter password"
                   className="form-control"
@@ -63,20 +67,27 @@ function Login() {
                 />
               </div>
               <div className="mb-3">
-                  {error && (
-                    <div className="alert alert-danger" role="alert">
-                      {error}
-                    </div>
-                  )}
-                </div>
+                {error && (
+                  <div className="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                )}
+                {successMessage && (
+                  <div className="alert alert-success" role="alert">
+                    {successMessage}
+                  </div>
+                )}
+              </div>
               <button
                 type="button"
                 className="btn btn-success mb-3 w-100"
                 onClick={handleLogin}
               >
-                <strong>Login</strong>
+                Login
               </button>
-              <p className="text-center">Don't have an account? <Link to="/signup">Click here</Link></p>
+              <p className="text-center">
+                Don't have an account? <Link to="/signup">Sign up</Link>
+              </p>
             </form>
           </div>
         </div>

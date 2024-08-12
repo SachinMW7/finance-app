@@ -23,6 +23,16 @@ function MessagePage() {
     fetchContactMessages();
   }, []);
 
+  const handleDeleteMessage = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/contact_messages/${id}`);
+      // Filter out the deleted message from the contactMessages state
+      setContactMessages(contactMessages.filter(message => message.id !== id));
+    } catch (error) {
+      console.error('Error deleting message:', error);
+    }
+  };
+
   const handleGoBack = () => {
     window.history.back(); 
   };
@@ -33,7 +43,7 @@ function MessagePage() {
 
   return (
     <div className="container mt-4">
-      <h2 className="m-3 fw-normal text-center">Message Details Page</h2>
+      <h2 className="m-3 text-center text-secondary fw-bold">User Message Details</h2>
       <div className="table-responsive">
         <table className="table table-bordered table-striped table-hover">
           <thead className="table-dark">
@@ -44,6 +54,7 @@ function MessagePage() {
               <th>Email</th>
               <th>Message</th>
               <th>Created At</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -55,6 +66,9 @@ function MessagePage() {
                 <td>{message.email}</td>
                 <td>{message.message}</td>
                 <td>{new Date(message.created_at).toLocaleString()}</td>
+                <td>
+                  <button className="btn btn-danger" onClick={() => handleDeleteMessage(message.id)}>Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -46,7 +46,7 @@ function UsersPage() {
 
   return (
     <div className="container mt-4">
-      <h2 className="m-3 fw-normal text-center">Users Details Page</h2>
+      <h2 className="m-3 text-center text-secondary fw-bold">Users Details</h2>
       <div className="table-responsive">
         <table className="table table-bordered table-striped table-hover ">
           <thead className="table-dark">
@@ -54,6 +54,7 @@ function UsersPage() {
               <th>Sl. No</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Password</th> {/* Display password */}
               <th>Mobile No</th>
               <th>Address</th>
               <th>Created At</th>
@@ -66,6 +67,7 @@ function UsersPage() {
                 <td>{index + 1}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                <td>{user.password}</td> {/* Display password */}
                 <td>{user.mobileNo}</td>
                 <td>{user.address}</td>
                 <td>{new Date(user.created_at).toLocaleString()}</td>
